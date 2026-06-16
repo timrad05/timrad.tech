@@ -19,10 +19,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: var(--space-3);
   max-width: var(--container-max);
   margin-inline: auto;
   padding: var(--space-4) var(--container-padding);
+}
+
+.brand {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 .logo {
@@ -40,19 +47,26 @@
 }
 
 .nav {
-  display: none;
+  display: flex;
+  flex-shrink: 1;
   align-items: center;
-  gap: var(--space-6);
-  margin-inline: auto;
+  justify-content: flex-end;
+  gap: clamp(var(--space-2), 2.5vw, var(--space-6));
+  min-width: 0;
 
   @media (width >= 640px) {
-    display: flex;
+    position: absolute;
+    left: 50%;
+    flex-shrink: 0;
+    justify-content: center;
+    transform: translateX(-50%);
   }
 }
 
 .navLink {
+  flex-shrink: 0;
   font-family: var(--font-sans);
-  font-size: var(--text-sm);
+  font-size: clamp(0.6875rem, 2.8vw, var(--text-sm));
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--color-text-muted);

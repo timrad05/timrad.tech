@@ -11,9 +11,12 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <a className={styles.logo} href="#top">
-          timrad.tech
-        </a>
+        <div className={styles.brand}>
+          <a className={styles.logo} href="#top">
+            timrad.tech
+          </a>
+          <ThemeToggle />
+        </div>
 
         <nav className={styles.nav} aria-label="Основная навигация">
           {NAV_ITEMS.map((item) => (
@@ -22,8 +25,6 @@ export function Header() {
             </a>
           ))}
         </nav>
-
-        <ThemeToggle />
       </div>
     </header>
   )
