@@ -1,0 +1,3 @@
+export const SCROLL_HINT_SHOW_DELAY_MS = 1_200
+
+export const SCROLL_HINT_SCROLL_THRESHOLD_PX = 48

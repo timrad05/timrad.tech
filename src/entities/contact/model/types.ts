@@ -1,4 +1,4 @@
-export type ContactType = 'telegram' | 'email' | 'github' | 'resume'
+export type ContactType = 'telegram' | 'email' | 'github'
 
 export interface ContactLink {
   id: string

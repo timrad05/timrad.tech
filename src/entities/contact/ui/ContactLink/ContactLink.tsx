@@ -14,7 +14,7 @@ function isExternalHref(href: string) {
 export function ContactLink({ link }: ContactLinkProps) {
   const { path, title } = contactIconMap[link.type]
   const { title: displayTitle, hint } = getContactMeta(link)
-  const external = isExternalHref(link.href) || link.type === 'resume'
+  const external = isExternalHref(link.href)
 
   return (
     <a

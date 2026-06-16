@@ -16,10 +16,12 @@
 
 .body {
   @include section-body;
+  min-width: 0;
 }
 
 .links {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-5);
   margin: 0;
   padding: 0;
@@ -28,5 +30,21 @@
   @include tablet-up {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-6);
+
+    & > li:nth-child(3):last-child {
+      grid-column: 1 / -1;
+    }
   }
+
+  @include desktop-up {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    & > li:nth-child(3):last-child {
+      grid-column: auto;
+    }
+  }
+}
+
+.links > li {
+  min-width: 0;
 }

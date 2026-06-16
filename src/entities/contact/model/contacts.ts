@@ -19,10 +19,4 @@ export const contacts: ContactLink[] = [
     href: 'https://github.com/timrad05',
     type: 'github',
   },
-  {
-    id: 'resume',
-    label: 'Резюме (PDF)',
-    href: '/cv.pdf',
-    type: 'resume',
-  },
 ]

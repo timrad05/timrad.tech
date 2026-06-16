@@ -1,4 +1,5 @@
 import { BackgroundDecor } from '@/shared/ui'
+import { ScrollHint } from '@/features/scroll-hint'
 import { About } from '@/widgets/about'
 import { Contacts } from '@/widgets/contacts'
 import { Footer } from '@/widgets/footer'
@@ -24,6 +25,8 @@ export function HomePage() {
 
         <Footer />
       </div>
+
+      <ScrollHint />
     </>
   )
 }
