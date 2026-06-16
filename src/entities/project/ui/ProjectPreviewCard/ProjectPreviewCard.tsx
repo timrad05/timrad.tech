@@ -16,7 +16,13 @@ export function ProjectPreviewCard({ project, onSelect }: ProjectPreviewCardProp
         onClick={() => onSelect(project)}
         aria-label={`Показать проект ${project.title}`}
       >
-        <ProjectCover project={project} className={styles.cover} showCategory={false} size="lg" />
+        <ProjectCover
+          project={project}
+          className={styles.cover}
+          showCategory={false}
+          size="lg"
+          layout="preview"
+        />
 
         <div className={styles.hoverOverlay} aria-hidden="true">
           <p className={styles.overlayTitle}>{project.title}</p>

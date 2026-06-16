@@ -2,10 +2,13 @@
 
 .projects {
   @include viewport-section;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .inner {
   @include section-grid;
+  min-width: 0;
 }
 
 .label {
@@ -14,12 +17,16 @@
 
 .body {
   @include section-body;
+  min-width: 0;
+  overflow-x: clip;
 }
 
 .bento {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  min-width: 0;
+  max-width: 100%;
 
   @include tablet-up {
     display: grid;
@@ -34,7 +41,7 @@
 }
 
 .featuredSlot {
-  min-height: 22rem;
+  min-width: 0;
 
   @include tablet-up {
     min-height: clamp(20rem, 34vw, 24rem);
@@ -45,6 +52,8 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-3);
+  min-width: 0;
+  max-width: 100%;
 
   @include tablet-up {
     display: flex;

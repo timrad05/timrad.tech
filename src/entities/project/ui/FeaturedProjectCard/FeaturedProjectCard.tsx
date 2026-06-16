@@ -26,7 +26,7 @@ export function FeaturedProjectCard({
   return (
     <article className={styles.card}>
       <div className={styles.visual}>
-        <ProjectCover project={project} size="lg" className={styles.cover} />
+        <ProjectCover project={project} size="lg" layout="featured" className={styles.cover} />
       </div>
 
       <div className={styles.content}>

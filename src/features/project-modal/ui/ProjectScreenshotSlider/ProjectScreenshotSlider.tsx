@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Screenshot } from '@/entities/project'
+import { usePreloadImages } from '../../model/usePreloadImages'
 import styles from './ProjectScreenshotSlider.module.scss'
 
 type ProjectScreenshotSliderProps = {
@@ -12,8 +13,12 @@ export function ProjectScreenshotSlider({
   onImageClick,
 }: ProjectScreenshotSliderProps) {
   const [index, setIndex] = useState(0)
+  const [loadedSrc, setLoadedSrc] = useState<string | null>(null)
   const total = screenshots.length
   const current = screenshots[index]
+  const isLoaded = loadedSrc === current?.src
+
+  usePreloadImages(screenshots.map((shot) => shot.src))
 
   if (!current) {
     return null
@@ -46,7 +51,17 @@ export function ProjectScreenshotSlider({
           onClick={() => onImageClick(current)}
           aria-label={`Открыть скриншот: ${current.alt}`}
         >
-          <img className={styles.image} src={current.src} alt={current.alt} />
+          <span className={styles.slideFrame} data-loaded={isLoaded}>
+            <img
+              className={styles.image}
+              src={current.src}
+              alt={current.alt}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              onLoad={() => setLoadedSrc(current.src)}
+            />
+          </span>
         </button>
 
         <button

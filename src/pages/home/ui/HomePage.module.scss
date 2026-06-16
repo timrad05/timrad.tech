@@ -9,4 +9,5 @@
   max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: var(--container-padding);
+  overflow-x: clip;
 }

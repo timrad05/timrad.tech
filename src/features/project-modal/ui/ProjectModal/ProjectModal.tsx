@@ -4,6 +4,7 @@ import type { Project } from '@/entities/project'
 import { getProjectCategoryLabel, ProjectStack } from '@/entities/project'
 import { Button } from '@/shared/ui'
 import { useImageLightbox } from '../../model/useImageLightbox'
+import { usePreloadImages } from '../../model/usePreloadImages'
 import { ImageLightbox } from '../ImageLightbox/ImageLightbox'
 import { ProjectScreenshotSlider } from '../ProjectScreenshotSlider/ProjectScreenshotSlider'
 import styles from './ProjectModal.module.scss'
@@ -16,6 +17,8 @@ type ProjectModalProps = {
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
   const titleId = useId()
   const { screenshot, open, close } = useImageLightbox()
+
+  usePreloadImages(project?.screenshots.map((shot) => shot.src) ?? [])
 
   useEffect(() => {
     if (!project) {
@@ -47,7 +50,8 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
     return null
   }
 
-  const hasScreenshots = project.screenshots.length > 0
+  const galleryScreenshots = project.screenshots.filter((shot) => !shot.cover)
+  const hasGallery = galleryScreenshots.length > 0
   const description = project.fullDescription || project.shortDescription
 
   return createPortal(
@@ -88,9 +92,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           </header>
 
           <div className={styles.content}>
-            {hasScreenshots && (
+            {hasGallery && (
               <ProjectScreenshotSlider
-                screenshots={project.screenshots}
+                screenshots={galleryScreenshots}
                 onImageClick={open}
               />
             )}

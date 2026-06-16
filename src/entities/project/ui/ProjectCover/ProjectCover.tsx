@@ -14,10 +14,13 @@ const coverAccents: Record<string, string> = {
   mesto: '#34d399',
 }
 
+type CoverLayout = 'featured' | 'preview'
+
 type ProjectCoverProps = {
   project: Project
   className?: string
   size?: 'sm' | 'lg'
+  layout?: CoverLayout
   showCategory?: boolean
 }
 
@@ -25,6 +28,7 @@ export function ProjectCover({
   project,
   className,
   size = 'sm',
+  layout = 'featured',
   showCategory = true,
 }: ProjectCoverProps) {
   const accent = coverAccents[project.id] ?? '#a1a1ad'
@@ -32,12 +36,31 @@ export function ProjectCover({
 
   return (
     <div
-      className={cn(styles.cover, styles[size], cover && styles.hasImage, className)}
-      style={{ '--cover-accent': accent } as CSSProperties}
+      className={cn(
+        styles.cover,
+        styles[size],
+        cover && styles.hasImage,
+        layout === 'preview' && styles.preview,
+        layout === 'featured' && size === 'lg' && styles.featured,
+        className,
+      )}
+      style={
+        {
+          '--cover-accent': accent,
+          ...(cover ? { '--cover-image': `url("${cover.src}")` } : {}),
+        } as CSSProperties
+      }
       aria-hidden="true"
     >
       {cover ? (
-        <img className={styles.image} src={cover.src} alt="" />
+        <img
+          className={styles.image}
+          src={cover.src}
+          alt=""
+          loading={size === 'lg' ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchPriority={size === 'lg' ? 'high' : 'auto'}
+        />
       ) : (
         <span className={styles.glow} />
       )}

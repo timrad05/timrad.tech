@@ -5,7 +5,7 @@ import {
   secondaryProjects,
 } from '@/entities/project'
 import { useFeaturedProject } from '@/features/project-featured'
-import { ProjectModal, useProjectModal } from '@/features/project-modal'
+import { ProjectModal, usePreloadImages, useProjectModal } from '@/features/project-modal'
 import styles from './Projects.module.scss'
 import { useMemo, useState } from 'react'
 
@@ -21,6 +21,8 @@ export function Projects() {
   } = useFeaturedProject(featuredProjects)
 
   const { project, isOpen, open, close } = useProjectModal()
+
+  usePreloadImages(featured.screenshots.map((shot) => shot.src))
 
   const [isAllOpen, setIsAllOpen] = useState(false)
 
