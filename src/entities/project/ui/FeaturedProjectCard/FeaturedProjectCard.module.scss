@@ -248,6 +248,12 @@
 }
 
 .action {
-  align-self: flex-start;
+  align-self: stretch;
+  width: 100%;
   margin-top: var(--space-2);
+
+  @include tablet-up {
+    align-self: flex-start;
+    width: auto;
+  }
 }

@@ -22,18 +22,6 @@
   @include section-body;
   min-width: 0;
   overflow: visible;
-  border-left: none;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset-block: 0;
-    left: 0;
-    width: 1px;
-    background: var(--color-border-strong);
-    z-index: 2;
-    pointer-events: none;
-  }
 }
 
 .bento {
