@@ -1,0 +1,41 @@
+@use '@/app/styles/mixins' as *;
+
+.section {
+  padding-block: var(--section-gap);
+}
+
+.inner {
+  @include container;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-10);
+  max-width: 40rem;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+
+  @include tablet-up {
+    font-size: var(--text-2xl);
+  }
+}
+
+.subtitle {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: var(--color-text-muted);
+}

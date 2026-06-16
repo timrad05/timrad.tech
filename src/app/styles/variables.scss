@@ -1,0 +1,93 @@
+/* Dark theme (default) */
+:root,
+[data-theme='dark'] {
+  --color-bg: #08080a;
+  --color-bg-elevated: #121216;
+  --color-bg-muted: #1a1a20;
+  --color-text: #f8f8fa;
+  --color-text-muted: #a1a1ad;
+  --color-text-subtle: #6e6e7a;
+  --color-inverse: #08080a;
+  --color-surface: #f4f4f6;
+  --color-border: rgb(255 255 255 / 10%);
+  --color-border-strong: rgb(255 255 255 / 20%);
+  --color-stroke: rgb(255 255 255 / 28%);
+  --color-stroke-soft: rgb(255 255 255 / 12%);
+  --color-stroke-faint: rgb(255 255 255 / 6%);
+  --color-glow-a: rgb(255 255 255 / 22%);
+  --color-glow-b: rgb(220 220 230 / 14%);
+  --color-glow-c: rgb(255 255 255 / 9%);
+  --color-monogram: rgb(255 255 255 / 4.5%);
+  --shadow-soft: 0 24px 80px rgb(0 0 0 / 45%);
+  --shadow-glow: 0 0 80px rgb(255 255 255 / 14%);
+}
+
+/* Light theme */
+[data-theme='light'] {
+  --color-bg: #f3f3f6;
+  --color-bg-elevated: #ffffff;
+  --color-bg-muted: #e8e8ee;
+  --color-text: #0c0c10;
+  --color-text-muted: #4a4a56;
+  --color-text-subtle: #727280;
+  --color-inverse: #f3f3f6;
+  --color-surface: #0c0c10;
+  --color-border: rgb(0 0 0 / 9%);
+  --color-border-strong: rgb(0 0 0 / 16%);
+  --color-stroke: rgb(0 0 0 / 22%);
+  --color-stroke-soft: rgb(0 0 0 / 10%);
+  --color-stroke-faint: rgb(0 0 0 / 5%);
+  --color-glow-a: rgb(0 0 0 / 9%);
+  --color-glow-b: rgb(60 60 72 / 7%);
+  --color-glow-c: rgb(0 0 0 / 5%);
+  --color-monogram: rgb(0 0 0 / 3.5%);
+  --shadow-soft: 0 24px 80px rgb(0 0 0 / 8%);
+  --shadow-glow: 0 0 80px rgb(0 0 0 / 7%);
+}
+
+:root {
+  --font-sans: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-display: 'Syne', var(--font-sans);
+  --font-accent: 'Martian Mono', ui-monospace, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: clamp(1.75rem, 4vw, 2.5rem);
+  --text-hero: clamp(2.75rem, 9vw, 5.5rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  --container-max: 76rem;
+  --container-padding: var(--space-4);
+  --section-gap: var(--space-20);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.125rem;
+  --radius-full: 9999px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+}
+
+@media (width >= 768px) {
+  :root {
+    --container-padding: var(--space-6);
+    --section-gap: clamp(5rem, 10vw, 7.5rem);
+  }
+}

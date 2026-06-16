@@ -1,0 +1,7 @@
+export { BackgroundDecor } from './BackgroundDecor/BackgroundDecor'
+export { Button } from './Button/Button'
+export type { ButtonProps } from './Button/Button'
+export { Section } from './Section/Section'
+export type { SectionProps } from './Section/Section'
+export { Tag } from './Tag/Tag'
+export type { TagProps } from './Tag/Tag'

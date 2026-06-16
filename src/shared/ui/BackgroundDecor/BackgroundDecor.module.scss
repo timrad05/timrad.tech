@@ -1,0 +1,212 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glowPrimary,
+.glowSecondary,
+.glowCore {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.glowPrimary {
+  top: -18%;
+  right: -6%;
+  width: min(62vw, 760px);
+  height: min(62vw, 760px);
+  filter: blur(90px);
+  background: radial-gradient(
+    circle,
+    var(--color-glow-a) 0%,
+    var(--color-glow-c) 45%,
+    transparent 72%
+  );
+}
+
+.glowSecondary {
+  bottom: -22%;
+  left: -12%;
+  width: min(70vw, 840px);
+  height: min(70vw, 840px);
+  filter: blur(110px);
+  background: radial-gradient(
+    circle,
+    var(--color-glow-b) 0%,
+    var(--color-glow-c) 40%,
+    transparent 70%
+  );
+}
+
+.glowCore {
+  top: 28%;
+  left: 18%;
+  width: min(45vw, 520px);
+  height: min(45vw, 520px);
+  filter: blur(130px);
+  background: radial-gradient(
+    circle,
+    var(--color-glow-c) 0%,
+    transparent 68%
+  );
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.monogram {
+  fill: var(--color-monogram);
+  font-family: var(--font-display);
+  font-size: clamp(280px, 42vw, 520px);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  user-select: none;
+  shape-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+}
+
+.ring {
+  stroke: var(--color-stroke-soft);
+  stroke-width: 1;
+}
+
+.ringSoft {
+  stroke: var(--color-stroke-faint);
+  stroke-width: 1;
+}
+
+.ringFaint {
+  stroke: var(--color-stroke-faint);
+  stroke-width: 1;
+  opacity: 0.55;
+}
+
+.ribbon {
+  stroke: var(--color-stroke);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+}
+
+.ribbonSoft {
+  stroke: var(--color-stroke-soft);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.ribbonAccent {
+  stroke: var(--color-stroke-soft);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-dasharray: 6 14;
+}
+
+.halftoneDot {
+  fill: var(--color-stroke-soft);
+}
+
+.halftoneBlock {
+  fill: url('#halftone');
+  opacity: 0.55;
+  mask-image: radial-gradient(circle at center, black 20%, transparent 72%);
+}
+
+.arcMark {
+  stroke: var(--color-stroke);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  mask-image: radial-gradient(
+    ellipse 70% 65% at 50% 48%,
+    transparent 22%,
+    black 100%
+  );
+  pointer-events: none;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(
+    ellipse 75% 65% at 42% 42%,
+    transparent 25%,
+    var(--color-bg) 100%
+  );
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .glowPrimary {
+    animation: driftA 24s var(--ease-out) infinite alternate;
+  }
+
+  .glowSecondary {
+    animation: driftB 28s var(--ease-out) infinite alternate;
+  }
+
+  .glowCore {
+    animation: driftC 20s var(--ease-out) infinite alternate;
+  }
+
+  .ribbon {
+    animation: sway 16s var(--ease-out) infinite alternate;
+  }
+}
+
+@keyframes driftA {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(-4%, 5%) scale(1.1);
+  }
+}
+
+@keyframes driftB {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(5%, -4%) scale(1.08);
+  }
+}
+
+@keyframes driftC {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(-3%, 2%) scale(1.12);
+  }
+}
+
+@keyframes sway {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(12px);
+  }
+}
