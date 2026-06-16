@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import type { Project } from '../../model/types'
 import { getProjectCategoryLabel } from '../../lib/categoryLabel'
+import { getCategoryAccent } from '../../lib/categoryAccent'
 import { getProjectCover } from '../../lib/getProjectCover'
 import { cn } from '@/shared/lib/cn'
 import styles from './ProjectCover.module.scss'
@@ -47,6 +48,7 @@ export function ProjectCover({
       style={
         {
           '--cover-accent': accent,
+          '--category-accent': getCategoryAccent(project.category),
           ...(cover ? { '--cover-image': `url("${cover.src}")` } : {}),
         } as CSSProperties
       }

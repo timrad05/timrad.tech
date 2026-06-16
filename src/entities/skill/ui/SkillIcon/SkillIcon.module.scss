@@ -19,11 +19,7 @@
   color: var(--color-text-muted);
   cursor: default;
   backdrop-filter: blur(10px);
-  transition:
-    border-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out);
+  @include hover-motion-transition;
 
   [data-theme='light'] & {
     background:
@@ -62,12 +58,9 @@
 
   &:hover,
   &:focus-visible {
-    border-color: var(--color-border-strong);
-    color: var(--color-text);
-    box-shadow:
-      0 0 0 1px var(--color-stroke-faint),
-      var(--shadow-glow);
-    transform: translateY(-3px);
+    @media (hover: hover) {
+      @include hover-glow-state;
+    }
   }
 
   &:hover .glow,
@@ -84,6 +77,10 @@
   &:focus-visible {
     outline: 2px solid var(--color-stroke);
     outline-offset: 3px;
+
+    @media (hover: none) {
+      @include hover-glow-state;
+    }
   }
 }
 

@@ -70,33 +70,33 @@
   flex-shrink: 0;
   display: grid;
   place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: rgb(255 255 255 / 4%);
+  padding: var(--space-1);
+  margin: -0.15rem -0.15rem 0 0;
+  border: none;
+  background: transparent;
   color: var(--color-text-muted);
-  font-size: 1.35rem;
-  line-height: 1;
   cursor: pointer;
   transition:
-    border-color var(--duration-fast) var(--ease-out),
-    color var(--duration-fast) var(--ease-out);
+    color var(--duration-base) var(--ease-out),
+    opacity var(--duration-base) var(--ease-out);
 
-  [data-theme='light'] & {
-    background: rgb(255 255 255 / 55%);
-  }
-
-  &:hover {
-    border-color: var(--color-border-strong);
-    color: var(--color-text);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-text);
+      opacity: 1;
+    }
   }
 
   &:focus-visible {
     outline: 2px solid var(--color-stroke);
-    outline-offset: 2px;
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
   }
+}
+
+.closeIcon {
+  width: 1.35rem;
+  height: 1.35rem;
 }
 
 .role {

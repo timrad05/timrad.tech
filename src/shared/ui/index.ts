@@ -1,6 +1,8 @@
 export { BackgroundDecor } from './BackgroundDecor/BackgroundDecor'
 export { Button } from './Button/Button'
 export type { ButtonProps } from './Button/Button'
+export { ChevronIcon } from './ChevronIcon/ChevronIcon'
+export { CloseIcon } from './CloseIcon/CloseIcon'
 export { Section } from './Section/Section'
 export type { SectionProps } from './Section/Section'
 export { Tag } from './Tag/Tag'

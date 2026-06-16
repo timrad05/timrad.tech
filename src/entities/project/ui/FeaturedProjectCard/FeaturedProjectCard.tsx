@@ -1,5 +1,5 @@
 import type { Project } from '../../model/types'
-import { Button } from '@/shared/ui'
+import { Button, ChevronIcon } from '@/shared/ui'
 import { ProjectCover } from '../ProjectCover/ProjectCover'
 import styles from './FeaturedProjectCard.module.scss'
 
@@ -26,7 +26,17 @@ export function FeaturedProjectCard({
   return (
     <article className={styles.card}>
       <div className={styles.visual}>
-        <ProjectCover project={project} size="lg" layout="featured" className={styles.cover} />
+        <button
+          type="button"
+          className={styles.coverButton}
+          onClick={() => onOpen(project)}
+          aria-label={`Подробнее о проекте ${project.title}`}
+        >
+          <ProjectCover project={project} size="lg" layout="featured" className={styles.cover} />
+          <span className={styles.coverOverlay} aria-hidden="true">
+            <span className={styles.coverHint}>подробнее</span>
+          </span>
+        </button>
       </div>
 
       <div className={styles.content}>
@@ -45,7 +55,7 @@ export function FeaturedProjectCard({
               onClick={onPrev}
               aria-label="Предыдущий проект"
             >
-              ←
+              <ChevronIcon direction="left" className={styles.navIcon} />
             </button>
             <button
               type="button"
@@ -53,7 +63,7 @@ export function FeaturedProjectCard({
               onClick={onNext}
               aria-label="Следующий проект"
             >
-              →
+              <ChevronIcon direction="right" className={styles.navIcon} />
             </button>
           </div>
         </div>

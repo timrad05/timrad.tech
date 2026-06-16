@@ -3,7 +3,7 @@
 .projects {
   @include viewport-section;
   max-width: 100%;
-  overflow-x: clip;
+  overflow-x: visible;
 }
 
 .inner {
@@ -18,7 +18,7 @@
 .body {
   @include section-body;
   min-width: 0;
-  overflow-x: clip;
+  overflow: visible;
 }
 
 .bento {
@@ -27,6 +27,7 @@
   gap: var(--space-4);
   min-width: 0;
   max-width: 100%;
+  overflow: visible;
 
   @include tablet-up {
     display: grid;
@@ -42,6 +43,7 @@
 
 .featuredSlot {
   min-width: 0;
+  overflow: visible;
 
   @include tablet-up {
     min-height: clamp(20rem, 34vw, 24rem);
@@ -54,6 +56,8 @@
   gap: var(--space-3);
   min-width: 0;
   max-width: 100%;
+  overflow: visible;
+  padding-inline-end: var(--space-2);
 
   @include tablet-up {
     display: flex;
@@ -99,9 +103,7 @@
   letter-spacing: -0.03em;
   text-transform: lowercase;
   cursor: pointer;
-  transition:
-    color var(--duration-fast) var(--ease-out),
-    background var(--duration-fast) var(--ease-out);
+  @include hover-motion-transition;
 
   @include tablet-up {
     width: auto;
@@ -111,11 +113,6 @@
 
   &:hover {
     color: var(--color-text-muted);
-    background: rgb(255 255 255 / 4%);
-
-    [data-theme='light'] & {
-      background: rgb(0 0 0 / 3%);
-    }
   }
 
   &:focus-visible {
@@ -166,25 +163,26 @@
   background: rgb(255 255 255 / 3%);
   cursor: pointer;
   text-align: left;
-  transition:
-    border-color var(--duration-fast) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out),
-    background var(--duration-fast) var(--ease-out);
+  @include hover-motion-transition;
 
   [data-theme='light'] & {
     background: rgb(255 255 255 / 45%);
   }
 
-  &:hover {
-    border-color: var(--color-border-strong);
-    box-shadow: var(--shadow-glow);
-    transform: translateY(-1px);
+  &:hover,
+  &:focus-visible {
+    @media (hover: hover) {
+      @include hover-list-row-state;
+    }
   }
 
   &:focus-visible {
     outline: 2px solid var(--color-stroke);
     outline-offset: 3px;
+
+    @media (hover: none) {
+      @include hover-list-row-state;
+    }
   }
 }
 
@@ -211,6 +209,18 @@
   letter-spacing: -0.02em;
   color: var(--color-text);
   line-height: 1.25;
+  background-image: linear-gradient(currentcolor, currentcolor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition:
+    color var(--duration-base) var(--ease-out),
+    background-size var(--duration-base) var(--ease-out);
+
+  .allItem:hover &,
+  .allItem:focus-visible & {
+    background-size: 100% 1px;
+  }
 }
 
 .allDesc {

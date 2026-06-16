@@ -1,3 +1,5 @@
+@use '@/app/styles/mixins' as *;
+
 .slider {
   margin-bottom: var(--space-6);
 }
@@ -20,21 +22,17 @@
   border-radius: var(--radius-sm);
   background: rgb(255 255 255 / 4%);
   color: var(--color-text-muted);
-  font-family: var(--font-accent);
-  font-size: var(--text-base);
   cursor: pointer;
-  transition:
-    border-color var(--duration-fast) var(--ease-out),
-    color var(--duration-fast) var(--ease-out),
-    opacity var(--duration-fast) var(--ease-out);
+  @include hover-motion-transition;
 
   [data-theme='light'] & {
     background: rgb(255 255 255 / 55%);
   }
 
-  &:hover:not(:disabled) {
-    border-color: var(--color-border-strong);
-    color: var(--color-text);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      @include hover-glow-state;
+    }
   }
 
   &:disabled {
@@ -48,6 +46,11 @@
   }
 }
 
+.navIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
 .slideButton {
   display: block;
   width: 100%;
@@ -57,10 +60,13 @@
   background: var(--color-bg-muted);
   overflow: hidden;
   cursor: zoom-in;
-  transition: border-color var(--duration-fast) var(--ease-out);
+  @include hover-motion-transition;
 
-  &:hover {
-    border-color: var(--color-border-strong);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--color-border-strong);
+      box-shadow: var(--shadow-glow);
+    }
   }
 
   &:focus-visible {

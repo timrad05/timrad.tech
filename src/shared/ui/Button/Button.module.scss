@@ -1,3 +1,5 @@
+@use '@/app/styles/mixins' as *;
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -13,12 +15,7 @@
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  transition:
-    background-color var(--duration-base) var(--ease-out),
-    border-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out);
+  @include hover-motion-transition;
 
   &:focus-visible {
     outline: 2px solid var(--color-stroke);
@@ -30,12 +27,8 @@
     cursor: not-allowed;
   }
 
-  &:hover:not(:disabled) {
-    transform: translateY(-2px);
-  }
-
   &:active:not(:disabled) {
-    transform: translateY(0);
+    opacity: 0.9;
     transition-duration: var(--duration-fast);
   }
 }
@@ -55,8 +48,11 @@
   background: var(--color-surface);
   box-shadow: var(--shadow-soft);
 
-  &:hover:not(:disabled) {
-    box-shadow: var(--shadow-glow), var(--shadow-soft);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      box-shadow: var(--shadow-glow), var(--shadow-soft);
+      transform: none;
+    }
   }
 }
 
@@ -64,9 +60,12 @@
   color: var(--color-text);
   background: transparent;
 
-  &:hover:not(:disabled) {
-    background: var(--color-bg-muted);
-    transform: none;
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--color-bg-muted);
+      transform: none;
+      box-shadow: none;
+    }
   }
 }
 
@@ -80,14 +79,17 @@
     background: rgb(255 255 255 / 45%);
   }
 
-  &:hover:not(:disabled) {
-    border-color: var(--color-border-strong);
-    color: var(--color-text);
-    background: rgb(255 255 255 / 8%);
-    box-shadow: var(--shadow-glow);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      border-color: var(--color-border-strong);
+      color: var(--color-text);
+      background: rgb(255 255 255 / 8%);
+      box-shadow: var(--shadow-glow);
+      transform: none;
 
-    [data-theme='light'] & {
-      background: rgb(255 255 255 / 62%);
+      [data-theme='light'] & {
+        background: rgb(255 255 255 / 62%);
+      }
     }
   }
 }

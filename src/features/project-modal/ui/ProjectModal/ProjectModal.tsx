@@ -2,7 +2,7 @@ import { useEffect, useId } from 'react'
 import { createPortal } from 'react-dom'
 import type { Project } from '@/entities/project'
 import { getProjectCategoryLabel, ProjectStack } from '@/entities/project'
-import { Button } from '@/shared/ui'
+import { Button, CloseIcon } from '@/shared/ui'
 import { useImageLightbox } from '../../model/useImageLightbox'
 import { usePreloadImages } from '../../model/usePreloadImages'
 import { ImageLightbox } from '../ImageLightbox/ImageLightbox'
@@ -84,7 +84,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 onClick={onClose}
                 aria-label="Закрыть"
               >
-                ×
+                <CloseIcon className={styles.closeIcon} />
               </button>
             </div>
 

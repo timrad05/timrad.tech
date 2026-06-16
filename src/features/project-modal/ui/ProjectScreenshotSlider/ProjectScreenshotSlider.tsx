@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Screenshot } from '@/entities/project'
+import { ChevronIcon } from '@/shared/ui'
 import { usePreloadImages } from '../../model/usePreloadImages'
 import styles from './ProjectScreenshotSlider.module.scss'
 
@@ -42,7 +43,7 @@ export function ProjectScreenshotSlider({
           aria-label="Предыдущий скриншот"
           disabled={total <= 1}
         >
-          ←
+          <ChevronIcon direction="left" className={styles.navIcon} />
         </button>
 
         <button
@@ -71,7 +72,7 @@ export function ProjectScreenshotSlider({
           aria-label="Следующий скриншот"
           disabled={total <= 1}
         >
-          →
+          <ChevronIcon direction="right" className={styles.navIcon} />
         </button>
       </div>
 
