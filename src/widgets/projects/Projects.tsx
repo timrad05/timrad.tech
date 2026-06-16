@@ -53,7 +53,7 @@ export function Projects() {
 
   return (
     <>
-      <section id="projects" aria-labelledby="projects-label">
+      <section className={styles.projects} id="projects" aria-labelledby="projects-label">
         <div className={styles.inner}>
           <p className={styles.label} id="projects-label">
             проекты

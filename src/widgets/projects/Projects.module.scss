@@ -1,32 +1,19 @@
 @use '@/app/styles/mixins' as *;
 
-.inner {
-  @include container;
-  display: grid;
-  gap: var(--space-6);
-  align-items: start;
+.projects {
+  @include viewport-section;
+}
 
-  @include tablet-up {
-    grid-template-columns: minmax(7rem, 10rem) minmax(0, 1fr);
-    gap: var(--space-12);
-  }
+.inner {
+  @include section-grid;
 }
 
 .label {
-  margin: 0;
-  padding-top: 0.35em;
-  font-family: var(--font-accent);
-  font-size: var(--text-xs);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  color: var(--color-text-subtle);
-  text-transform: lowercase;
+  @include section-label;
 }
 
 .body {
-  position: relative;
-  padding-left: var(--space-6);
-  border-left: 1px solid var(--color-border-strong);
+  @include section-body;
 }
 
 .bento {

@@ -1,12 +1,8 @@
+@use '@/app/styles/mixins' as *;
+
 .hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-5);
-  min-height: calc(100svh - 4.5rem);
-  justify-content: center;
-  padding-block: var(--space-12);
+  @include viewport-section;
+  justify-items: start;
   max-width: 48rem;
 }
 
@@ -40,7 +36,7 @@
   gap: var(--space-3);
   margin: 0;
   font-family: var(--font-accent);
-  font-size: var(--text-sm);
+  font-size: clamp(var(--text-sm), 1.6vw, var(--text-base));
   font-weight: 400;
   letter-spacing: -0.03em;
   color: var(--color-text-muted);

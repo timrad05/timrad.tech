@@ -17,6 +17,45 @@
   padding-inline: var(--container-padding);
 }
 
+@mixin viewport-section {
+  display: grid;
+  align-content: center;
+  justify-items: stretch;
+  width: 100%;
+  min-height: calc(100svh - var(--header-offset));
+  padding-block: clamp(var(--space-6), 4vh, var(--space-10));
+  box-sizing: border-box;
+}
+
+@mixin section-grid {
+  @include container;
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+  width: 100%;
+
+  @include tablet-up {
+    grid-template-columns: minmax(8rem, 11rem) minmax(0, 1fr);
+    gap: var(--space-12);
+  }
+}
+
+@mixin section-label {
+  margin: 0;
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--color-text-subtle);
+  text-transform: lowercase;
+}
+
+@mixin section-body {
+  position: relative;
+  padding-left: var(--space-8);
+  border-left: 1px solid var(--color-border-strong);
+}
+
 @mixin focus-ring {
   outline: 2px solid var(--color-text);
   outline-offset: 2px;

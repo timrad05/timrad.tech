@@ -5,15 +5,16 @@ import styles from './SkillIcon.module.scss'
 type SkillIconProps = {
   icon: SkillIconId
   label: string
+  size?: 'md' | 'lg'
 }
 
-export function SkillIcon({ icon, label }: SkillIconProps) {
+export function SkillIcon({ icon, label, size = 'md' }: SkillIconProps) {
   const { path, title } = skillIconMap[icon]
 
   return (
     <button
       type="button"
-      className={styles.root}
+      className={`${styles.root} ${styles[size]}`}
       aria-label={label}
       data-tooltip={label}
     >

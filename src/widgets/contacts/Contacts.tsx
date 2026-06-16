@@ -3,7 +3,7 @@ import styles from './Contacts.module.scss'
 
 export function Contacts() {
   return (
-    <section id="contacts" aria-labelledby="contacts-label">
+    <section className={styles.contacts} id="contacts" aria-labelledby="contacts-label">
       <div className={styles.inner}>
         <p className={styles.label} id="contacts-label">
           контакты

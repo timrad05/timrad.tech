@@ -5,7 +5,7 @@
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--space-5);
-  min-height: 7.5rem;
+  min-height: 8.5rem;
   padding: var(--space-5) var(--space-5) var(--space-5) var(--space-6);
   overflow: hidden;
   border: 1px solid rgb(255 255 255 / 8%);
@@ -114,8 +114,8 @@
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: 5.75rem;
-  height: 5.75rem;
+  width: 6.5rem;
+  height: 6.5rem;
   border: 1px solid rgb(255 255 255 / 10%);
   border-radius: var(--radius-md);
   background: rgb(255 255 255 / 4%);
@@ -130,8 +130,8 @@
 }
 
 .svg {
-  width: 3.35rem;
-  height: 3.35rem;
+  width: 3.75rem;
+  height: 3.75rem;
 }
 
 .text {
@@ -145,7 +145,7 @@
 
 .title {
   font-family: var(--font-accent);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-weight: 400;
   letter-spacing: -0.03em;
   color: var(--color-text-muted);
@@ -155,7 +155,7 @@
 
 .hint {
   font-family: var(--font-sans);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-weight: 400;
   line-height: 1.45;
   letter-spacing: -0.01em;
