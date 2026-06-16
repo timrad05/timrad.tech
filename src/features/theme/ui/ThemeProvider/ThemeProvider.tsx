@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { useTheme } from '../hooks/useTheme'
-import { ThemeContext } from '../model/ThemeContext'
+import { useTheme } from '../../model/useTheme'
+import { ThemeContext } from '../../model/ThemeContext'
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const value = useTheme()

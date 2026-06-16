@@ -9,6 +9,9 @@ export type SkillIconId =
   | 'storybook'
   | 'html'
   | 'css'
+  | 'jest'
+  | 'cypress'
+  | 'webpack'
 
 export interface Skill {
   id: string

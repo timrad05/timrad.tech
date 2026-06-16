@@ -1,0 +1,123 @@
+.slider {
+  margin-bottom: var(--space-6);
+}
+
+.viewport {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.navButton {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: rgb(255 255 255 / 4%);
+  color: var(--color-text-muted);
+  font-family: var(--font-accent);
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+
+  [data-theme='light'] & {
+    background: rgb(255 255 255 / 55%);
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-border-strong);
+    color: var(--color-text);
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-stroke);
+    outline-offset: 2px;
+  }
+}
+
+.slideButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-muted);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: border-color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    border-color: var(--color-border-strong);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-stroke);
+    outline-offset: 2px;
+  }
+}
+
+.image {
+  display: block;
+  width: 100%;
+  max-height: 18rem;
+  object-fit: cover;
+  object-position: top;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.counter {
+  font-family: var(--font-accent);
+  font-size: var(--text-xs);
+  letter-spacing: -0.03em;
+  color: var(--color-text-subtle);
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--color-stroke-soft);
+  cursor: pointer;
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+
+  &[data-active='true'] {
+    transform: scale(1.2);
+    background: var(--color-text-muted);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-stroke);
+    outline-offset: 2px;
+  }
+}

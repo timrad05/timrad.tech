@@ -8,6 +8,8 @@ export interface Screenshot {
   alt: string
   variant: ScreenshotVariant
   theme?: ScreenshotTheme
+  /** Main image for bento card. Falls back to the first screenshot. */
+  cover?: boolean
 }
 
 export interface Project {

@@ -1,10 +1,10 @@
 import { BackgroundDecor } from '@/shared/ui'
-import { About } from '@/widgets/about/About'
-import { Header } from '@/widgets/header/Header'
-import { Hero } from '@/widgets/hero/Hero'
-import { Projects } from '@/widgets/projects/Projects'
-import { Contacts } from '@/widgets/contacts/Contacts'
-import { Footer } from '@/widgets/footer/Footer'
+import { About } from '@/widgets/about'
+import { Contacts } from '@/widgets/contacts'
+import { Footer } from '@/widgets/footer'
+import { Header } from '@/widgets/header'
+import { Hero } from '@/widgets/hero'
+import { Projects } from '@/widgets/projects'
 import styles from './HomePage.module.scss'
 
 export function HomePage() {

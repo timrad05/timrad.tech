@@ -1,4 +1,4 @@
-import { useThemeContext } from '@/features/theme/hooks/useThemeContext'
+import { useThemeContext } from '../../model/useThemeContext'
 import { MoonIcon, SunIcon } from './ThemeIcons'
 import styles from './ThemeToggle.module.scss'
 

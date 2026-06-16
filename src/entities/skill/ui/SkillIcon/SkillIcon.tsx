@@ -1,5 +1,5 @@
-import type { SkillIconId } from '@/entities/skill'
-import { skillIconMap } from './icons'
+import type { SkillIconId } from '../../model/types'
+import { skillIconMap } from '../../lib/skillIconMap'
 import styles from './SkillIcon.module.scss'
 
 type SkillIconProps = {

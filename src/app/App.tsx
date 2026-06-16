@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@/features/theme'
-import { HomePage } from '@/pages/home/HomePage'
+import { HomePage } from '@/pages/home'
 
 export function App() {
   return (

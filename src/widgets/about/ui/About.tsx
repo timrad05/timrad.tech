@@ -1,6 +1,5 @@
 import { aboutLead, profileStatus } from '@/entities/profile'
-import { skills } from '@/entities/skill'
-import { SkillIcon } from '@/shared/ui/SkillIcon/SkillIcon'
+import { SkillIcon, skills } from '@/entities/skill'
 import styles from './About.module.scss'
 
 export function About() {

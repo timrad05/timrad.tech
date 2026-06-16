@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import type { Project } from '../../model/types'
 import { getProjectCategoryLabel } from '../../lib/categoryLabel'
+import { getProjectCover } from '../../lib/getProjectCover'
 import { cn } from '@/shared/lib/cn'
 import styles from './ProjectCover.module.scss'
 
@@ -27,14 +28,20 @@ export function ProjectCover({
   showCategory = true,
 }: ProjectCoverProps) {
   const accent = coverAccents[project.id] ?? '#a1a1ad'
+  const cover = getProjectCover(project)
 
   return (
     <div
-      className={cn(styles.cover, styles[size], className)}
+      className={cn(styles.cover, styles[size], cover && styles.hasImage, className)}
       style={{ '--cover-accent': accent } as CSSProperties}
       aria-hidden="true"
     >
-      <span className={styles.glow} />
+      {cover ? (
+        <img className={styles.image} src={cover.src} alt="" />
+      ) : (
+        <span className={styles.glow} />
+      )}
+
       {showCategory && (
         <span className={styles.category}>
           {getProjectCategoryLabel(project.category)}
