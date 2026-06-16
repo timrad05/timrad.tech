@@ -10,4 +10,9 @@
   margin-inline: auto;
   padding-inline: var(--container-padding);
   overflow-x: clip;
+  overflow-clip-margin: var(--glow-spread);
+
+  @supports not (overflow-clip-margin: 1px) {
+    overflow-x: visible;
+  }
 }

@@ -8,7 +8,16 @@ import type { Project } from '@/entities/project'
 import { useFeaturedProject } from '@/features/project-featured'
 import { ProjectModal, usePreloadImages, useProjectModal } from '@/features/project-modal'
 import styles from './Projects.module.scss'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, type CSSProperties } from 'react'
+
+const ALL_LIST_CLOSE_LAYOUT_MS = 460
+const ALL_LIST_CLOSE_BUFFER_MS = 50
+
+type AllListState = 'closed' | 'open' | 'closing'
+
+function getAllListCloseDuration() {
+  return ALL_LIST_CLOSE_LAYOUT_MS + ALL_LIST_CLOSE_BUFFER_MS
+}
 
 export function Projects() {
   const {
@@ -25,7 +34,24 @@ export function Projects() {
 
   usePreloadImages(featured.screenshots.map((shot) => shot.src))
 
-  const [isAllOpen, setIsAllOpen] = useState(false)
+  const [allListState, setAllListState] = useState<AllListState>('closed')
+
+  const isAllOpen = allListState === 'open'
+  const isAllListVisible = allListState !== 'closed'
+
+  useEffect(() => {
+    if (allListState !== 'closing') return
+
+    const id = window.setTimeout(() => {
+      setAllListState('closed')
+    }, getAllListCloseDuration())
+
+    return () => window.clearTimeout(id)
+  }, [allListState])
+
+  function toggleAllList() {
+    setAllListState((state) => (state === 'open' ? 'closing' : 'open'))
+  }
 
   const featuredIds = useMemo(
     () => new Set(featuredProjects.map((p) => p.id)),
@@ -82,7 +108,7 @@ export function Projects() {
               <button
                 type="button"
                 className={styles.allToggleButton}
-                onClick={() => setIsAllOpen((v) => !v)}
+                onClick={toggleAllList}
                 aria-expanded={isAllOpen}
               >
                 <span className={styles.allToggleLabel}>
@@ -101,10 +127,25 @@ export function Projects() {
               </button>
             </div>
 
-            {isAllOpen && (
-              <ol className={styles.allList} aria-label="Все проекты">
+            {isAllListVisible && (
+              <div
+                className={styles.allListPanel}
+                data-state={allListState}
+                aria-hidden={allListState === 'closing' ? true : undefined}
+              >
+                <div className={styles.allListCollapse}>
+                  <ol className={styles.allList} aria-label="Все проекты">
                 {portfolioProjects.map((item, i) => (
-                  <li key={item.id}>
+                  <li
+                    key={item.id}
+                    className={styles.allListItem}
+                    style={
+                      {
+                        '--item-index': i,
+                        '--item-total': portfolioProjects.length,
+                      } as CSSProperties
+                    }
+                  >
                     <button
                       type="button"
                       className={styles.allItem}
@@ -123,7 +164,9 @@ export function Projects() {
                     </button>
                   </li>
                 ))}
-              </ol>
+                  </ol>
+                </div>
+              </div>
             )}
           </div>
         </div>

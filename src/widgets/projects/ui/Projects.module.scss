@@ -9,6 +9,7 @@
 .inner {
   @include section-grid;
   min-width: 0;
+  overflow: visible;
 }
 
 .label {
@@ -19,6 +20,19 @@
   @include section-body;
   min-width: 0;
   overflow: visible;
+  border-left: none;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 1px;
+    background: var(--color-border-strong);
+    z-index: 2;
+    pointer-events: none;
+  }
 }
 
 .bento {
@@ -142,13 +156,93 @@
   transform: translateY(-1px);
 }
 
+.allListPanel {
+  display: grid;
+  grid-template-rows: 0fr;
+  position: relative;
+  z-index: 0;
+  margin-top: 0;
+  overflow: visible;
+  transition:
+    grid-template-rows var(--duration-slow) var(--ease-out),
+    margin-top var(--duration-slow) var(--ease-out);
+
+  &[data-state='open'] {
+    grid-template-rows: 1fr;
+    margin-top: var(--space-4);
+
+    @starting-style {
+      grid-template-rows: 0fr;
+      margin-top: 0;
+    }
+  }
+
+  &[data-state='closing'] {
+    grid-template-rows: 0fr;
+    margin-top: 0;
+    pointer-events: none;
+  }
+}
+
+.allListCollapse {
+  min-height: 0;
+  overflow: visible;
+
+  .allListPanel[data-state='closing'] & {
+    overflow: hidden;
+  }
+}
+
 .allList {
-  margin: var(--space-4) 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+}
+
+.allListItem {
+  --item-stagger: 75ms;
+  --item-close-stagger: 36ms;
+
+  @include reduced-motion-no-transform;
+
+  .allListPanel[data-state='open'] & {
+    animation: all-list-item-in var(--duration-slow) var(--ease-out) both;
+    animation-delay: calc(var(--item-index) * var(--item-stagger));
+  }
+
+  .allListPanel[data-state='closing'] & {
+    animation: all-list-item-out var(--duration-slow) var(--ease-out) both;
+    animation-delay: calc(
+      (var(--item-total) - 1 - var(--item-index)) * var(--item-close-stagger)
+    );
+  }
+}
+
+@keyframes all-list-item-in {
+  from {
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes all-list-item-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
 }
 
 .allItem {
