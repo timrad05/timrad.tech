@@ -58,6 +58,52 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
-  padding-top: var(--space-4);
+  gap: var(--space-4);
+  padding-top: clamp(var(--space-5), 3vh, var(--space-8));
+}
+
+.action {
+  min-width: 11.5rem;
+  font-size: var(--text-base);
+  border-radius: var(--radius-lg);
+  letter-spacing: -0.025em;
+}
+
+.action.actionPrimary {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  border: none;
+  background: transparent;
+  color: var(--color-inverse);
+  overflow: hidden;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    filter var(--duration-base) var(--ease-out);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background-color: var(--color-text-muted);
+    background-image: linear-gradient(
+      120deg,
+      var(--color-text) 0%,
+      var(--color-text-muted) 72%
+    );
+    transition: filter var(--duration-base) var(--ease-out);
+  }
+
+  &:hover:not(:disabled)::before {
+    filter: brightness(1.06);
+  }
+
+  &:active:not(:disabled)::before {
+    filter: brightness(0.98);
+  }
 }

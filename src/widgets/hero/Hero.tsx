@@ -1,4 +1,5 @@
 import { Button } from '@/shared/ui'
+import { cn } from '@/shared/lib/cn'
 import styles from './Hero.module.scss'
 
 export function Hero() {
@@ -16,8 +17,14 @@ export function Hero() {
       </p>
 
       <div className={styles.actions}>
-        <Button href="#projects">Смотреть проекты</Button>
-        <Button variant="outline" href="https://t.me/d2IIy">
+        <Button
+          href="#projects"
+          size="lg"
+          className={cn(styles.action, styles.actionPrimary)}
+        >
+          Смотреть проекты
+        </Button>
+        <Button variant="outline" href="https://t.me/d2IIy" size="lg" className={styles.action}>
           Написать
         </Button>
       </div>
