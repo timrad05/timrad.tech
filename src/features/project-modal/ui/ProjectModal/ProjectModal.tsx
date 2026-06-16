@@ -3,28 +3,41 @@ import { createPortal } from 'react-dom'
 import type { Project } from '@/entities/project'
 import { getProjectCategoryLabel, ProjectStack } from '@/entities/project'
 import { Button, CloseIcon } from '@/shared/ui'
+import { cn } from '@/shared/lib/cn'
 import { useImageLightbox } from '../../model/useImageLightbox'
 import { usePreloadImages } from '../../model/usePreloadImages'
 import { ImageLightbox } from '../ImageLightbox/ImageLightbox'
 import { ProjectScreenshotSlider } from '../ProjectScreenshotSlider/ProjectScreenshotSlider'
 import styles from './ProjectModal.module.scss'
 
+const MODAL_CLOSE_MS = 420
+
 type ProjectModalProps = {
-  project: Project | null
-  onClose: () => void
+  project: Project
+  closing?: boolean
+  onRequestClose: () => void
+  onClosed: () => void
 }
 
-export function ProjectModal({ project, onClose }: ProjectModalProps) {
+export function ProjectModal({
+  project,
+  closing = false,
+  onRequestClose,
+  onClosed,
+}: ProjectModalProps) {
   const titleId = useId()
   const { screenshot, open, close } = useImageLightbox()
 
-  usePreloadImages(project?.screenshots.map((shot) => shot.src) ?? [])
+  usePreloadImages(project.screenshots.map((shot) => shot.src))
 
   useEffect(() => {
-    if (!project) {
-      return
-    }
+    if (!closing) return
 
+    const id = window.setTimeout(onClosed, MODAL_CLOSE_MS)
+    return () => window.clearTimeout(id)
+  }, [closing, onClosed])
+
+  useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         if (screenshot) {
@@ -32,7 +45,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           return
         }
 
-        onClose()
+        if (!closing) {
+          onRequestClose()
+        }
       }
     }
 
@@ -44,21 +59,26 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [close, onClose, project, screenshot])
-
-  if (!project) {
-    return null
-  }
+  }, [close, closing, onRequestClose, screenshot])
 
   const galleryScreenshots = project.screenshots.filter((shot) => !shot.cover)
   const hasGallery = galleryScreenshots.length > 0
   const description = project.fullDescription || project.shortDescription
 
+  const handleOverlayClick = () => {
+    if (!closing) {
+      onRequestClose()
+    }
+  }
+
   return createPortal(
     <>
-      <div className={styles.overlay} onClick={onClose}>
+      <div
+        className={cn(styles.overlay, closing && styles.overlayClosing)}
+        onClick={handleOverlayClick}
+      >
         <div
-          className={styles.dialog}
+          className={cn(styles.dialog, closing && styles.dialogClosing)}
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
@@ -81,8 +101,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               <button
                 type="button"
                 className={styles.close}
-                onClick={onClose}
+                onClick={onRequestClose}
                 aria-label="Закрыть"
+                disabled={closing}
               >
                 <CloseIcon className={styles.closeIcon} />
               </button>

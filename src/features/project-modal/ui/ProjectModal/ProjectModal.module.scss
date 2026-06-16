@@ -1,3 +1,5 @@
+@use '@/app/styles/mixins' as *;
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -7,11 +9,16 @@
   padding: var(--space-4);
   background: rgb(0 0 0 / 62%);
   backdrop-filter: blur(10px);
-  animation: fade-in var(--duration-fast) var(--ease-out);
+  animation: modal-overlay-in var(--duration-base) var(--ease-out) both;
 
   [data-theme='light'] & {
     background: rgb(8 8 10 / 42%);
   }
+}
+
+.overlayClosing {
+  animation: modal-overlay-out var(--duration-base) var(--ease-out) both;
+  pointer-events: none;
 }
 
 .dialog {
@@ -24,7 +31,17 @@
   border-radius: var(--radius-lg);
   background: color-mix(in srgb, var(--color-bg-elevated) 94%, transparent);
   box-shadow: var(--shadow-soft);
-  animation: slide-up var(--duration-base) var(--ease-out);
+  transform-origin: center bottom;
+  animation: modal-dialog-in var(--duration-slow) var(--ease-out) both;
+
+  @include tablet-up {
+    transform-origin: center center;
+  }
+}
+
+.dialogClosing {
+  animation: modal-dialog-out var(--duration-base) var(--ease-out) both;
+  pointer-events: none;
 }
 
 .header {
@@ -81,7 +98,7 @@
     opacity var(--duration-base) var(--ease-out);
 
   @media (hover: hover) {
-    &:hover {
+    &:hover:not(:disabled) {
       color: var(--color-text);
       opacity: 1;
     }
@@ -91,6 +108,10 @@
     outline: 2px solid var(--color-stroke);
     outline-offset: 3px;
     border-radius: var(--radius-sm);
+  }
+
+  &:disabled {
+    cursor: default;
   }
 }
 
@@ -130,7 +151,7 @@
   border-top: 1px solid var(--color-border);
 }
 
-@keyframes fade-in {
+@keyframes modal-overlay-in {
   from {
     opacity: 0;
   }
@@ -140,14 +161,45 @@
   }
 }
 
-@keyframes slide-up {
+@keyframes modal-overlay-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-dialog-in {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translate3d(0, 1.5rem, 0) scale(0.97);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes modal-dialog-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, 0.85rem, 0) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .overlayClosing,
+  .dialog,
+  .dialogClosing {
+    animation: none;
   }
 }

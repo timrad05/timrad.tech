@@ -31,7 +31,7 @@ export function Projects() {
     goPrev,
   } = useFeaturedProject(featuredProjects)
 
-  const { project, isOpen, open, close } = useProjectModal()
+  const { project, isOpen, isClosing, open, close, finishClose } = useProjectModal()
 
   usePreloadImages(featured.screenshots.map((shot) => shot.src))
 
@@ -173,7 +173,14 @@ export function Projects() {
         </ScrollReveal>
       </section>
 
-      {isOpen && <ProjectModal project={project} onClose={close} />}
+      {isOpen && project && (
+        <ProjectModal
+          project={project}
+          closing={isClosing}
+          onRequestClose={close}
+          onClosed={finishClose}
+        />
+      )}
     </>
   )
 }

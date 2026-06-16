@@ -3,7 +3,9 @@
 .projects {
   @include viewport-section;
   max-width: 100%;
-  overflow-x: visible;
+  overflow: visible;
+  content-visibility: visible;
+  contain-intrinsic-size: auto;
 }
 
 .inner {
@@ -21,7 +23,6 @@
   min-width: 0;
   overflow: visible;
   border-left: none;
-  isolation: isolate;
 
   &::before {
     content: '';
@@ -86,6 +87,7 @@
     & > * {
       flex: 1;
       min-height: 0;
+      overflow: visible;
     }
   }
 }
@@ -195,7 +197,7 @@
 
 .allList {
   margin: 0;
-  padding: 0;
+  padding: var(--space-1) var(--space-2) var(--space-1) 0;
   list-style: none;
   display: flex;
   flex-direction: column;
