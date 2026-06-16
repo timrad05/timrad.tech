@@ -1,0 +1,67 @@
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+  min-height: calc(100svh - 4.5rem);
+  justify-content: center;
+  padding-block: var(--space-12);
+  max-width: 48rem;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05em;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.titleLine {
+  display: block;
+  background: linear-gradient(
+    120deg,
+    var(--color-text) 0%,
+    var(--color-text-muted) 100%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+.role {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--color-text-muted);
+  text-transform: lowercase;
+}
+
+.roleSlash {
+  color: var(--color-stroke);
+  font-weight: 700;
+}
+
+.roleLine {
+  flex: 1;
+  max-width: 5rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-stroke-soft), transparent);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+}
