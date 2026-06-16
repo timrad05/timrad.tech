@@ -1,4 +1,5 @@
 export { contacts, featuredProjects, secondaryProjects } from './model/projects'
+export { getProjectCategoryLabel, projectCategoryLabels } from './lib/categoryLabel'
 export type {
   ContactLink,
   Project,

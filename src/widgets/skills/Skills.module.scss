@@ -1,8 +1,7 @@
 @use '@/app/styles/mixins' as *;
 
 .skills {
-  margin-top: calc(-1 * var(--space-4));
-  padding-bottom: var(--section-gap);
+  padding-block: var(--section-gap);
 }
 
 .inner {

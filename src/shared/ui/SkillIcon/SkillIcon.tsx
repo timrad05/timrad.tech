@@ -14,7 +14,6 @@ export function SkillIcon({ icon, label }: SkillIconProps) {
     <button
       type="button"
       className={styles.root}
-      data-icon={icon}
       aria-label={label}
       data-tooltip={label}
     >

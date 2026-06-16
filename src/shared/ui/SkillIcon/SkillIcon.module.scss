@@ -1,6 +1,4 @@
 .root {
-  --skill-accent: #a1a1ad;
-
   position: relative;
   isolation: isolate;
   display: grid;
@@ -9,16 +7,16 @@
   height: 5.25rem;
   padding: 0;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--skill-accent) 22%, var(--color-border));
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background:
     linear-gradient(
       155deg,
-      color-mix(in srgb, var(--skill-accent) 16%, transparent) 0%,
-      transparent 48%,
+      rgb(255 255 255 / 10%) 0%,
+      transparent 46%,
       rgb(255 255 255 / 2%) 100%
     );
-  color: color-mix(in srgb, var(--skill-accent) 72%, var(--color-text-muted));
+  color: var(--color-text-muted);
   cursor: default;
   backdrop-filter: blur(10px);
   transition:
@@ -31,51 +29,11 @@
     background:
       linear-gradient(
         155deg,
-        color-mix(in srgb, var(--skill-accent) 14%, transparent) 0%,
-        transparent 52%,
-        rgb(255 255 255 / 72%) 100%
+        rgb(255 255 255 / 72%) 0%,
+        transparent 50%,
+        rgb(0 0 0 / 2%) 100%
       );
-    color: color-mix(in srgb, var(--skill-accent) 58%, var(--color-text-muted));
-  }
-
-  &[data-icon='react'] {
-    --skill-accent: #61dafb;
-  }
-
-  &[data-icon='typescript'] {
-    --skill-accent: #3178c6;
-  }
-
-  &[data-icon='javascript'] {
-    --skill-accent: #f7df1e;
-  }
-
-  &[data-icon='redux'] {
-    --skill-accent: #764abc;
-  }
-
-  &[data-icon='vite'] {
-    --skill-accent: #a78bfa;
-  }
-
-  &[data-icon='scss'] {
-    --skill-accent: #cd6799;
-  }
-
-  &[data-icon='html'] {
-    --skill-accent: #e34f26;
-  }
-
-  &[data-icon='css'] {
-    --skill-accent: #1572b6;
-  }
-
-  &[data-icon='git'] {
-    --skill-accent: #f05032;
-  }
-
-  &[data-icon='storybook'] {
-    --skill-accent: #ff4785;
+    color: var(--color-text-subtle);
   }
 
   &::after {
@@ -104,17 +62,17 @@
 
   &:hover,
   &:focus-visible {
-    border-color: color-mix(in srgb, var(--skill-accent) 42%, var(--color-border-strong));
-    color: color-mix(in srgb, var(--skill-accent) 88%, var(--color-text));
+    border-color: var(--color-border-strong);
+    color: var(--color-text);
     box-shadow:
-      0 0 0 1px color-mix(in srgb, var(--skill-accent) 12%, transparent),
-      0 12px 40px color-mix(in srgb, var(--skill-accent) 22%, transparent);
+      0 0 0 1px var(--color-stroke-faint),
+      var(--shadow-glow);
     transform: translateY(-3px);
   }
 
   &:hover .glow,
   &:focus-visible .glow {
-    opacity: 0.55;
+    opacity: 0.5;
   }
 
   &:hover::after,
@@ -124,7 +82,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--skill-accent) 50%, var(--color-stroke));
+    outline: 2px solid var(--color-stroke);
     outline-offset: 3px;
   }
 }
@@ -135,10 +93,10 @@
   z-index: -1;
   background: radial-gradient(
     circle at 35% 28%,
-    color-mix(in srgb, var(--skill-accent) 55%, transparent),
+    var(--color-glow-a),
     transparent 62%
   );
-  opacity: 0.28;
+  opacity: 0.24;
   transition: opacity var(--duration-base) var(--ease-out);
   pointer-events: none;
 }

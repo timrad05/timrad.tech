@@ -2,6 +2,7 @@ import { BackgroundDecor } from '@/shared/ui'
 import { About } from '@/widgets/about/About'
 import { Header } from '@/widgets/header/Header'
 import { Hero } from '@/widgets/hero/Hero'
+import { Projects } from '@/widgets/projects/Projects'
 import { Skills } from '@/widgets/skills/Skills'
 import styles from './HomePage.module.scss'
 
@@ -17,6 +18,7 @@ export function HomePage() {
           <Hero />
           <About />
           <Skills />
+          <Projects />
         </main>
       </div>
     </>

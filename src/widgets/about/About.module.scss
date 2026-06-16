@@ -1,7 +1,8 @@
 @use '@/app/styles/mixins' as *;
 
 .about {
-  padding-block: var(--section-gap);
+  padding-top: var(--section-gap);
+  padding-bottom: 0;
 }
 
 .inner {

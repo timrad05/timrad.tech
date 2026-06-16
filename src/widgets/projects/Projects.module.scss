@@ -1,0 +1,82 @@
+@use '@/app/styles/mixins' as *;
+
+.projects {
+  padding-top: 0;
+  padding-bottom: var(--section-gap);
+}
+
+.inner {
+  @include container;
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+
+  @include tablet-up {
+    grid-template-columns: minmax(7rem, 10rem) minmax(0, 1fr);
+    gap: var(--space-12);
+  }
+}
+
+.label {
+  margin: 0;
+  padding-top: 0.35em;
+  font-family: var(--font-accent);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--color-text-subtle);
+  text-transform: lowercase;
+}
+
+.body {
+  position: relative;
+  padding-left: var(--space-6);
+  border-left: 1px solid var(--color-border-strong);
+}
+
+.bento {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  @include tablet-up {
+    display: grid;
+    grid-template-columns: minmax(0, 1.85fr) minmax(0, 0.95fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  @media (width >= 1200px) {
+    align-items: stretch;
+  }
+}
+
+.featuredSlot {
+  min-height: 22rem;
+
+  @include tablet-up {
+    min-height: clamp(20rem, 34vw, 24rem);
+  }
+}
+
+.sideRail {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+
+  @include tablet-up {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    align-self: start;
+
+    height: 100%;
+    min-height: 0;
+    align-items: stretch;
+
+    & > * {
+      flex: 1;
+      min-height: 0;
+    }
+  }
+}

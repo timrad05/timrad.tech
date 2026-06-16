@@ -1,0 +1,57 @@
+.cover {
+  --cover-accent: #a1a1ad;
+
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--cover-accent) 18%, var(--color-border));
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--cover-accent) 20%, transparent),
+      transparent 55%,
+      rgb(255 255 255 / 2%)
+    );
+
+  [data-theme='light'] & {
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--cover-accent) 14%, transparent),
+        transparent 58%,
+        rgb(255 255 255 / 70%)
+      );
+  }
+}
+
+.sm {
+  min-height: 7.5rem;
+}
+
+.lg {
+  min-height: 100%;
+}
+
+.glow {
+  position: absolute;
+  inset: -25%;
+  background: radial-gradient(
+    circle at 30% 25%,
+    color-mix(in srgb, var(--cover-accent) 45%, transparent),
+    transparent 65%
+  );
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.category {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  font-family: var(--font-accent);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: color-mix(in srgb, var(--cover-accent) 70%, var(--color-text-subtle));
+  text-transform: lowercase;
+}

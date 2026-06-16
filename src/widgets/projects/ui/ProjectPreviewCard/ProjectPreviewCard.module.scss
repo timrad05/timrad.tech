@@ -1,0 +1,136 @@
+@use '@/app/styles/mixins' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-bg-elevated) 60%, transparent);
+  backdrop-filter: blur(10px);
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+
+  [data-theme='light'] & {
+    background: color-mix(in srgb, var(--color-bg-elevated) 82%, transparent);
+  }
+
+  &:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+
+  @include tablet-up {
+    flex: 1;
+    min-height: 0;
+    border-radius: var(--radius-lg);
+  }
+}
+
+.selectArea {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: inherit;
+  aspect-ratio: 1;
+
+  @include tablet-up {
+    aspect-ratio: auto;
+    height: 100%;
+    flex: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-stroke);
+    outline-offset: -2px;
+  }
+
+  &:hover .hoverOverlay,
+  &:focus-visible .hoverOverlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  border-radius: 0;
+  border: 0;
+}
+
+.hoverOverlay {
+  display: none;
+}
+
+@include tablet-up {
+  .hoverOverlay {
+    display: flex;
+    position: absolute;
+    inset: 0;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    pointer-events: none;
+    z-index: 2;
+
+    opacity: 0;
+    transform: translateY(6px);
+    transition:
+      opacity var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out);
+
+    background: linear-gradient(
+      180deg,
+      rgb(0 0 0 / 0%) 10%,
+      rgb(0 0 0 / 28%) 60%,
+      rgb(0 0 0 / 66%) 100%
+    );
+
+    [data-theme='light'] & {
+      background: linear-gradient(
+        180deg,
+        rgb(255 255 255 / 0%) 10%,
+        rgb(255 255 255 / 55%) 60%,
+        rgb(255 255 255 / 92%) 100%
+      );
+    }
+  }
+}
+
+.overlayTitle {
+  margin: 0;
+  font-family: var(--font-accent);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  text-transform: lowercase;
+}
+
+.overlayText {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: var(--color-text-muted);
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
