@@ -6,7 +6,7 @@ import styles from './BackgroundDecor.module.scss'
  */
 export function BackgroundDecor() {
   return (
-    <div className={styles.root} aria-hidden="true">
+    <div className={styles.root} id="bg-decor" aria-hidden="true">
       <div className={styles.glowPrimary} />
       <div className={styles.glowSecondary} />
       <div className={styles.glowCore} />
@@ -39,30 +39,32 @@ export function BackgroundDecor() {
           TR
         </text>
 
-        <ellipse
-          className={styles.ring}
-          cx="1080"
-          cy="220"
-          rx="140"
-          ry="140"
-          fill="none"
-        />
-        <ellipse
-          className={styles.ringSoft}
-          cx="1080"
-          cy="220"
-          rx="200"
-          ry="200"
-          fill="none"
-        />
-        <ellipse
-          className={styles.ringFaint}
-          cx="1080"
-          cy="220"
-          rx="270"
-          ry="270"
-          fill="none"
-        />
+        <g className={styles.ringCluster}>
+          <ellipse
+            className={styles.ring}
+            cx="1080"
+            cy="220"
+            rx="140"
+            ry="140"
+            fill="none"
+          />
+          <ellipse
+            className={styles.ringSoft}
+            cx="1080"
+            cy="220"
+            rx="200"
+            ry="200"
+            fill="none"
+          />
+          <ellipse
+            className={styles.ringFaint}
+            cx="1080"
+            cy="220"
+            rx="270"
+            ry="270"
+            fill="none"
+          />
+        </g>
 
         <path
           className={styles.ribbon}

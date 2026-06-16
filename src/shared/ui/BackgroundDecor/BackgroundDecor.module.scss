@@ -4,6 +4,8 @@
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  contain: strict;
+  transform: translateZ(0);
 }
 
 .glowPrimary,
@@ -11,7 +13,8 @@
 .glowCore {
   position: absolute;
   border-radius: 50%;
-  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .glowPrimary {
@@ -72,6 +75,11 @@
   user-select: none;
   shape-rendering: geometricPrecision;
   text-rendering: geometricPrecision;
+}
+
+.ringCluster {
+  transform-box: view-box;
+  transform-origin: 1080px 220px;
 }
 
 .ring {
@@ -155,58 +163,129 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .glowPrimary {
-    animation: driftA 24s var(--ease-out) infinite alternate;
+    animation: bg-drift-a 38s ease-in-out infinite;
+    animation-delay: -12s;
   }
 
   .glowSecondary {
-    animation: driftB 28s var(--ease-out) infinite alternate;
+    animation: bg-drift-b 44s ease-in-out infinite;
+    animation-delay: -20s;
   }
 
   .glowCore {
-    animation: driftC 20s var(--ease-out) infinite alternate;
+    animation: bg-drift-c 32s ease-in-out infinite;
+    animation-delay: -6s;
   }
 
   .ribbon {
-    animation: sway 16s var(--ease-out) infinite alternate;
+    animation: bg-sway 20s ease-in-out infinite;
+    animation-delay: -4s;
+  }
+
+  .ribbonSoft {
+    animation: bg-sway 24s ease-in-out infinite reverse;
+    animation-delay: -10s;
+  }
+
+  .ribbonAccent {
+    animation: bg-sway 26s ease-in-out infinite;
+    animation-delay: -14s;
+  }
+
+  .ringCluster {
+    animation: bg-ring-drift 28s ease-in-out infinite;
+    animation-delay: -8s;
+  }
+
+  .monogram {
+    animation: bg-monogram-breathe 24s ease-in-out infinite;
   }
 }
 
-@keyframes driftA {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-
-  to {
-    transform: translate(-4%, 5%) scale(1.1);
-  }
-}
-
-@keyframes driftB {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-
-  to {
-    transform: translate(5%, -4%) scale(1.08);
+@media (prefers-reduced-motion: reduce) {
+  .glowPrimary,
+  .glowSecondary,
+  .glowCore,
+  .ribbon,
+  .ribbonSoft,
+  .ribbonAccent,
+  .ringCluster,
+  .monogram,
+  .grain {
+    animation: none;
   }
 }
 
-@keyframes driftC {
-  from {
-    transform: translate(0, 0) scale(1);
+@keyframes bg-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
-  to {
-    transform: translate(-3%, 2%) scale(1.12);
+  33% {
+    transform: translate3d(-2.5%, 3.5%, 0) scale(1.05);
+  }
+
+  66% {
+    transform: translate3d(-4.5%, 5%, 0) scale(1.09);
   }
 }
 
-@keyframes sway {
-  from {
-    transform: translateY(0);
+@keyframes bg-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
-  to {
-    transform: translateY(12px);
+  40% {
+    transform: translate3d(4%, -3%, 0) scale(1.06);
+  }
+
+  70% {
+    transform: translate3d(5.5%, -4.5%, 0) scale(1.08);
+  }
+}
+
+@keyframes bg-drift-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-3.5%, 2.5%, 0) scale(1.1);
+  }
+}
+
+@keyframes bg-sway {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, 10px, 0);
+  }
+}
+
+@keyframes bg-ring-drift {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+@keyframes bg-monogram-breathe {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+
+  50% {
+    opacity: 1;
   }
 }

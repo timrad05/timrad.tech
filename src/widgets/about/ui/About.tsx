@@ -1,11 +1,12 @@
 import { aboutLead, profileStatus } from '@/entities/profile'
 import { SkillIcon, skills } from '@/entities/skill'
+import { ScrollReveal } from '@/features/scroll-reveal'
 import styles from './About.module.scss'
 
 export function About() {
   return (
     <section className={styles.about} id="about" aria-labelledby="about-label">
-      <div className={styles.inner}>
+      <ScrollReveal className={styles.inner} stagger>
         <p className={styles.label} id="about-label">
           обо мне
         </p>
@@ -24,7 +25,7 @@ export function About() {
             </ul>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }

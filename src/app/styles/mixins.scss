@@ -25,6 +25,8 @@
   min-height: calc(100svh - var(--header-offset));
   padding-block: clamp(var(--space-6), 4vh, var(--space-10));
   box-sizing: border-box;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 80svh;
 }
 
 @mixin section-grid {

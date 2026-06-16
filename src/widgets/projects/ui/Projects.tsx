@@ -7,6 +7,7 @@ import {
 import type { Project } from '@/entities/project'
 import { useFeaturedProject } from '@/features/project-featured'
 import { ProjectModal, usePreloadImages, useProjectModal } from '@/features/project-modal'
+import { ScrollReveal } from '@/features/scroll-reveal'
 import styles from './Projects.module.scss'
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 
@@ -75,7 +76,7 @@ export function Projects() {
   return (
     <>
       <section className={styles.projects} id="projects" aria-labelledby="projects-label">
-        <div className={styles.inner}>
+        <ScrollReveal className={styles.inner} stagger>
           <p className={styles.label} id="projects-label">
             проекты
           </p>
@@ -169,7 +170,7 @@ export function Projects() {
               </div>
             )}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {isOpen && <ProjectModal project={project} onClose={close} />}

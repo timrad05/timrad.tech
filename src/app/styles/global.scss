@@ -48,6 +48,11 @@ body {
   min-height: 100svh;
 }
 
+html[data-scrolling] #bg-decor,
+html[data-scrolling] #bg-decor * {
+  animation-play-state: paused !important;
+}
+
 button,
 a {
   font: inherit;

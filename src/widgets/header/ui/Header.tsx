@@ -1,4 +1,5 @@
 import { ThemeToggle } from '@/features/theme'
+import { ScrollReveal } from '@/features/scroll-reveal'
 import styles from './Header.module.scss'
 
 const NAV_ITEMS = [
@@ -9,7 +10,7 @@ const NAV_ITEMS = [
 
 export function Header() {
   return (
-    <header className={styles.header}>
+    <ScrollReveal as="header" className={styles.header} immediate>
       <div className={styles.inner}>
         <div className={styles.brand}>
           <a className={styles.logo} href="#top">
@@ -26,6 +27,6 @@ export function Header() {
           ))}
         </nav>
       </div>
-    </header>
+    </ScrollReveal>
   )
 }
