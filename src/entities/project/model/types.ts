@@ -24,12 +24,6 @@ export interface Project {
   role?: string
 }
 
-export interface Skill {
-  id: string
-  name: string
-  icon: string
-}
-
 export interface ContactLink {
   id: string
   label: string

@@ -1,4 +1,4 @@
-export { contacts, featuredProjects, secondaryProjects, skills } from './model/projects'
+export { contacts, featuredProjects, secondaryProjects } from './model/projects'
 export type {
   ContactLink,
   Project,
@@ -6,5 +6,4 @@ export type {
   Screenshot,
   ScreenshotTheme,
   ScreenshotVariant,
-  Skill,
 } from './model/types'

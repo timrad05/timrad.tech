@@ -1,4 +1,4 @@
-import type { ContactLink, Project, Skill } from './types'
+import type { ContactLink, Project } from './types'
 
 export const featuredProjects: Project[] = [
   {
@@ -74,15 +74,6 @@ export const secondaryProjects: Project[] = [
     screenshots: [],
     githubUrl: 'https://github.com/timrad05/mesto-project-ff',
   },
-]
-
-export const skills: Skill[] = [
-  { id: 'react', name: 'React', icon: 'react' },
-  { id: 'typescript', name: 'TypeScript', icon: 'typescript' },
-  { id: 'redux', name: 'Redux', icon: 'redux' },
-  { id: 'vite', name: 'Vite', icon: 'vite' },
-  { id: 'scss', name: 'SCSS', icon: 'scss' },
-  { id: 'git', name: 'Git', icon: 'git' },
 ]
 
 export const contacts: ContactLink[] = [

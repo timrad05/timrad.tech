@@ -1,0 +1,24 @@
+@use '@/app/styles/mixins' as *;
+
+.skills {
+  margin-top: calc(-1 * var(--space-4));
+  padding-bottom: var(--section-gap);
+}
+
+.inner {
+  @include container;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4) var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include tablet-up {
+    gap: var(--space-5) var(--space-6);
+  }
+}
