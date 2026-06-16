@@ -1,4 +1,4 @@
-export { featuredProjects, secondaryProjects } from './model/projects'
+export { featuredProjects, learningProjects, portfolioProjects, secondaryProjects } from './model/projects'
 export { getProjectCategoryLabel, projectCategoryLabels } from './lib/categoryLabel'
 export { getProjectCover } from './lib/getProjectCover'
 export { getStackIconId } from './lib/stackIcon'

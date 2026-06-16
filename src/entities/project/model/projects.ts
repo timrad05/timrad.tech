@@ -15,10 +15,10 @@ function shots(
 export const featuredProjects: Project[] = [
   {
     id: 'freelance-concert',
-    title: 'Концерт и мерч-магазин',
-    shortDescription: 'Коммерческий фриланс: лендинг концерта и магазин мерча с оплатой',
+    title: 'Сайт концерта с магазином',
+    shortDescription: 'Коммерческий фриланс: оплата, админка, API и деплой в прод',
     fullDescription:
-      'Коммерческий проект для артиста Муза Ветров — интерактивный сайт в пиксель-арт стилистике с магазином мерча и билетами на концерт. Разработал публичную часть: главный экран с диалоговой системой, разделы Shop и Tickets, встроенный плеер, сценарий оформления заказа с выбором ПВЗ СДЭК, количеством товара и переходом к оплате. После покупки пользователь видит номер заказа прямо в интерфейсе. Отдельно собрал админ-панель: сводка по заказам, поиск и фильтры, смена статуса отправки, экспорт, детальная карточка с контактами покупателя и составом заказа. Реализовал светлую и тёмную тему в админке и адаптив для мобильных. Работал один — от вёрстки и клиентской логики до интеграции оплаты и выкладки в прод.',
+      'Коммерческий проект для музыкального артиста — интерактивный сайт в пиксель-арт стилистике с магазином мерча и билетами на концерт. Разработал публичную часть: главный экран с диалоговой системой, разделы Shop и Tickets, встроенный плеер, сценарий оформления заказа с выбором ПВЗ СДЭК, количеством товара и переходом к оплате. После покупки пользователь видит номер заказа прямо в интерфейсе. Отдельно собрал админ-панель: сводка по заказам, поиск и фильтры, смена статуса отправки, экспорт, детальная карточка с контактами покупателя и составом заказа. Реализовал светлую и тёмную тему в админке и адаптив для мобильных. Работал один — от вёрстки и клиентской логики до интеграции оплаты и выкладки в прод.',
     category: 'commercial',
     stack: ['React', 'TypeScript', 'Redux Toolkit', 'Vite', 'SCSS'],
     highlights: [],
@@ -50,7 +50,7 @@ export const featuredProjects: Project[] = [
       },
     ]),
     period: 'Апрель — Июнь 2026',
-    role: 'Frontend-разработчик — лендинг, магазин, оплата, админ-панель',
+    role: 'Frontend-разработчик — публичная часть, магазин, оплата, админ-панель',
   },
   {
     id: 'skillswap',
@@ -202,4 +202,54 @@ export const secondaryProjects: Project[] = [
     screenshots: [],
     githubUrl: 'https://github.com/timrad05/mesto-project-ff',
   },
+]
+
+export const learningProjects: Project[] = [
+  {
+    id: 'ono-tebe-nado',
+    title: 'Оно тебе надо',
+    shortDescription: 'Лендинг аукциона: вёрстка по макету, сетка и адаптив',
+    fullDescription: '',
+    category: 'learning',
+    stack: ['HTML', 'CSS'],
+    highlights: [],
+    screenshots: [],
+    githubUrl: 'https://github.com/timrad05/ono-tebe-nado-fd',
+  },
+  {
+    id: 'slozhno-sosredotochitsya',
+    title: 'Сложно сосредоточиться',
+    shortDescription: 'Адаптивная вёрстка с CSS-темами и кастомными элементами',
+    fullDescription: '',
+    category: 'learning',
+    stack: ['HTML', 'CSS'],
+    highlights: [],
+    screenshots: [],
+    githubUrl: 'https://github.com/timrad05/slozhno-sosredotochitsya-fd',
+  },
+  {
+    id: 'posmotri-v-okno',
+    title: 'Посмотри в окно',
+    shortDescription: 'Учебный лендинг: формы, валидация и доступность',
+    fullDescription: '',
+    category: 'learning',
+    stack: ['HTML', 'CSS', 'JavaScript'],
+    highlights: [],
+    screenshots: [],
+    githubUrl: 'https://github.com/timrad05/posmotri-v-okno-fd',
+  },
+]
+
+/** Все проекты из резюме — для раскрывающегося списка (порядок как в CV) */
+const featuredById = Object.fromEntries(
+  featuredProjects.map((project) => [project.id, project]),
+) as Record<string, Project>
+
+export const portfolioProjects: Project[] = [
+  featuredById['freelance-concert'],
+  featuredById['skillswap'],
+  featuredById['weblarek'],
+  featuredById['stellar-burgers'],
+  ...secondaryProjects,
+  ...learningProjects,
 ]

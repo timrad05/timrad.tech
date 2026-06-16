@@ -32,7 +32,10 @@ export function FeaturedProjectCard({
       <div className={styles.content}>
         <div className={styles.top}>
           <span className={styles.counter}>
-            {position} / {count}
+            <span className={styles.counterLabel}>главные</span>
+            <span className={styles.counterIndex}>
+              {position} / {count}
+            </span>
           </span>
 
           <div className={styles.nav}>

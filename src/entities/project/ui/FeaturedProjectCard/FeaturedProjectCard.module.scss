@@ -58,11 +58,23 @@
 }
 
 .counter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
   font-family: var(--font-accent);
   font-size: var(--text-xs);
   font-weight: 400;
   letter-spacing: -0.03em;
+  text-transform: lowercase;
+}
+
+.counterLabel {
   color: var(--color-text-subtle);
+  opacity: 0.72;
+}
+
+.counterIndex {
+  color: var(--color-text-muted);
 }
 
 .nav {

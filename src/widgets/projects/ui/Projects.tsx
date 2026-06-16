@@ -1,9 +1,10 @@
 import {
   FeaturedProjectCard,
   featuredProjects,
+  portfolioProjects,
   ProjectPreviewCard,
-  secondaryProjects,
 } from '@/entities/project'
+import type { Project } from '@/entities/project'
 import { useFeaturedProject } from '@/features/project-featured'
 import { ProjectModal, usePreloadImages, useProjectModal } from '@/features/project-modal'
 import styles from './Projects.module.scss'
@@ -26,27 +27,19 @@ export function Projects() {
 
   const [isAllOpen, setIsAllOpen] = useState(false)
 
-  const allProjects = useMemo(
-    () => [...featuredProjects, ...secondaryProjects],
-    [],
-  )
-
   const featuredIds = useMemo(
     () => new Set(featuredProjects.map((p) => p.id)),
     [],
   )
 
-  function handleAllProjectClick(nextProjectId: string) {
-    const nextProject = allProjects.find((p) => p.id === nextProjectId)
-    if (!nextProject) return
-
-    if (nextProject.githubUrl) {
-      window.open(nextProject.githubUrl, '_blank', 'noopener,noreferrer')
+  function handleAllProjectClick(project: Project) {
+    if (project.githubUrl) {
+      window.open(project.githubUrl, '_blank', 'noopener,noreferrer')
       return
     }
 
-    if (featuredIds.has(nextProjectId)) {
-      setFeaturedById(nextProjectId)
+    if (featuredIds.has(project.id)) {
+      setFeaturedById(project.id)
       document
         .getElementById('projects-bento')
         ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -92,7 +85,16 @@ export function Projects() {
                 onClick={() => setIsAllOpen((v) => !v)}
                 aria-expanded={isAllOpen}
               >
-                <span>{isAllOpen ? 'Свернуть' : 'Все проекты'}</span>
+                <span className={styles.allToggleLabel}>
+                  {isAllOpen ? (
+                    'свернуть'
+                  ) : (
+                    <>
+                      <span>все проекты</span>
+                      <span className={styles.allToggleCount}>{`{${portfolioProjects.length}}`}</span>
+                    </>
+                  )}
+                </span>
                 <span className={styles.allToggleIcon} aria-hidden="true">
                   {isAllOpen ? '↑' : '↓'}
                 </span>
@@ -101,12 +103,12 @@ export function Projects() {
 
             {isAllOpen && (
               <ol className={styles.allList} aria-label="Все проекты">
-                {allProjects.map((item, i) => (
+                {portfolioProjects.map((item, i) => (
                   <li key={item.id}>
                     <button
                       type="button"
                       className={styles.allItem}
-                      onClick={() => handleAllProjectClick(item.id)}
+                      onClick={() => handleAllProjectClick(item)}
                     >
                       <span className={styles.allNumber} aria-hidden="true">
                         {String(i + 1).padStart(2, '0')}
