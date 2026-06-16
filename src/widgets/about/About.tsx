@@ -3,7 +3,7 @@ import styles from './About.module.scss'
 
 export function About() {
   return (
-    <section className={styles.about} id="about" aria-labelledby="about-label">
+    <section id="about" aria-labelledby="about-label">
       <div className={styles.inner}>
         <p className={styles.label} id="about-label">
           обо мне

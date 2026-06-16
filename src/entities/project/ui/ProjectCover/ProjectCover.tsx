@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
-import type { Project } from '@/entities/project'
-import { getProjectCategoryLabel } from '@/entities/project/lib/categoryLabel'
+import type { Project } from '../../model/types'
+import { getProjectCategoryLabel } from '../../lib/categoryLabel'
 import { cn } from '@/shared/lib/cn'
 import styles from './ProjectCover.module.scss'
 

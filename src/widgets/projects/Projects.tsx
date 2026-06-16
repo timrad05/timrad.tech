@@ -1,8 +1,11 @@
-import { featuredProjects, secondaryProjects } from '@/entities/project'
+import {
+  FeaturedProjectCard,
+  featuredProjects,
+  ProjectPreviewCard,
+  secondaryProjects,
+} from '@/entities/project'
 import { useFeaturedProject } from '@/features/project-featured'
 import { ProjectModal, useProjectModal } from '@/features/project-modal'
-import { FeaturedProjectCard } from './ui/FeaturedProjectCard/FeaturedProjectCard'
-import { ProjectPreviewCard } from './ui/ProjectPreviewCard/ProjectPreviewCard'
 import styles from './Projects.module.scss'
 import { useMemo, useState } from 'react'
 
@@ -50,7 +53,7 @@ export function Projects() {
 
   return (
     <>
-      <section className={styles.projects} id="projects" aria-labelledby="projects-label">
+      <section id="projects" aria-labelledby="projects-label">
         <div className={styles.inner}>
           <p className={styles.label} id="projects-label">
             проекты

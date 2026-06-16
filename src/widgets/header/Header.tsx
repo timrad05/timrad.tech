@@ -4,6 +4,7 @@ import styles from './Header.module.scss'
 const NAV_ITEMS = [
   { label: 'Обо мне', href: '#about' },
   { label: 'Проекты', href: '#projects' },
+  { label: 'Контакты', href: '#contacts' },
 ] as const
 
 export function Header() {

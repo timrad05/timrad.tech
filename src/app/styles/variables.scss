@@ -74,6 +74,8 @@
   --container-max: 76rem;
   --container-padding: var(--space-4);
   --section-gap: var(--space-20);
+  --section-spacing: calc(var(--section-gap) * 1.6);
+  --header-offset: 5rem;
 
   --radius-sm: 0.5rem;
   --radius-md: 0.875rem;
@@ -89,5 +91,6 @@
   :root {
     --container-padding: var(--space-6);
     --section-gap: clamp(5rem, 10vw, 7.5rem);
+    --section-spacing: calc(var(--section-gap) * 1.6);
   }
 }

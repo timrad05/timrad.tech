@@ -1,10 +1,5 @@
 @use '@/app/styles/mixins' as *;
 
-.projects {
-  padding-top: 0;
-  padding-bottom: var(--section-gap);
-}
-
 .inner {
   @include container;
   display: grid;

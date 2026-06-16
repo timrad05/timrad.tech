@@ -1,9 +1,5 @@
 @use '@/app/styles/mixins' as *;
 
-.skills {
-  padding-block: var(--section-gap);
-}
-
 .inner {
   @include container;
 }

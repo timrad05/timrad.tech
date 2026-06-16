@@ -1,4 +1,4 @@
-import type { Project } from '@/entities/project'
+import type { Project } from '../../model/types'
 import { ProjectCover } from '../ProjectCover/ProjectCover'
 import styles from './ProjectPreviewCard.module.scss'
 

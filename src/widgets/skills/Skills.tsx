@@ -4,7 +4,7 @@ import styles from './Skills.module.scss'
 
 export function Skills() {
   return (
-    <section className={styles.skills} aria-label="Стек технологий">
+    <section aria-label="Стек технологий">
       <div className={styles.inner}>
         <ul className={styles.row}>
           {skills.map((skill) => (

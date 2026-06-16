@@ -23,10 +23,3 @@ export interface Project {
   period?: string
   role?: string
 }
-
-export interface ContactLink {
-  id: string
-  label: string
-  href: string
-  type: 'telegram' | 'email' | 'github' | 'resume'
-}

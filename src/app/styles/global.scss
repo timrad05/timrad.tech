@@ -9,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
   color-scheme: light dark;
 }
 
@@ -51,6 +52,13 @@ button,
 a {
   font: inherit;
   color: inherit;
+}
+
+#about,
+#projects,
+#contacts,
+#top {
+  scroll-margin-top: var(--header-offset);
 }
 
 h1,

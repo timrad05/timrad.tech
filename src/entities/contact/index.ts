@@ -1,0 +1,5 @@
+export { contacts } from './model/contacts'
+export { contactIconMap } from './lib/icons'
+export { getContactMeta } from './lib/meta'
+export { ContactLink } from './ui/ContactLink/ContactLink'
+export type { ContactLink as ContactLinkType, ContactType } from './model/types'
